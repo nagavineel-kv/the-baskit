@@ -50,6 +50,7 @@ public class WebSecurityConfig {
         return authenticationProvider;
     }
 
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception{
         return authConfig.getAuthenticationManager();
     }
@@ -68,8 +69,8 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/swagger-ui/**").permitAll()
-                        .requestMatchers("/api/public/**").permitAll()
-                        .requestMatchers("/api/admin/**").permitAll()
+                        //.requestMatchers("/api/public/**").permitAll()
+                        //.requestMatchers("/api/admin/**").permitAll()
                         .requestMatchers("/api/test/**").permitAll()
                         .requestMatchers("/images/**").permitAll()
                         .anyRequest().authenticated());
@@ -118,7 +119,7 @@ public class WebSecurityConfig {
                 User seller1 = new User("seller1", "seller@example.com", passwordEncoder.encode("password2"));
                 userRepository.save(seller1);
             }
-            if(!userRepository.existsByUserName("user1")){
+            if(!userRepository.existsByUserName("admin")){
                 User admin = new User("admin", "admin@example.com", passwordEncoder.encode("adminPass"));
                 userRepository.save(admin);
             }

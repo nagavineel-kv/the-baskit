@@ -5,15 +5,20 @@ import java.util.List;
 public class UserInfoResponse {
     private Long id;
     private String jwtToken;
-
     private String username;
-    private List<String> role;
+    private List<String> roles;
 
-    public UserInfoResponse(Long id, String jwtToken, String username, List<String> role) {
+    public UserInfoResponse(Long id, String username, List<String> roles, String jwtToken) {
         this.id = id;
-        this.jwtToken = jwtToken;
         this.username = username;
-        this.role = role;
+        this.roles = roles;
+        this.jwtToken = jwtToken;
+    }
+
+    public UserInfoResponse(Long id, String username, List<String> roles) {
+        this.id = id;
+        this.username = username;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -32,12 +37,12 @@ public class UserInfoResponse {
         this.jwtToken = jwtToken;
     }
 
-    public List<String> getRole() {
-        return role;
+    public List<String> getRoles() {
+        return roles;
     }
 
-    public void setRole(List<String> role) {
-        this.role = role;
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     public String getUsername() {
